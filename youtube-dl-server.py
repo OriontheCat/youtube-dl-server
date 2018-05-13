@@ -37,7 +37,7 @@ def dl_worker():
 
 def download(url):
     print("Starting download of " + url)
-    subprocess.run(["youtube-dl", "-o", "/youtube-dl/.incomplete/%(title)s.%(ext)s", "-f", "best[ext=mp4]", "--exec", "touch {} && mv {} /youtube-dl/", "--merge-output-format", "mp3", url])
+    subprocess.run(["youtube-dl", "-o", "/home/declan/Music.incomplete/%(title)s.%(ext)s", "-f", "best[ext=mp4]", "--exec", "touch {} && mv {} /music/declan/Music/", "--merge-output-format", "mp3", url])
     print("Finished downloading " + url)
 
 dl_q = Queue();
@@ -47,6 +47,6 @@ dl_thread.start()
 
 print("Started download thread")
 
-app.run(host='0.0.0.0', port=8000, debug=True)
+app.run(host='0.0.0.0', port=8080, debug=True)
 done = True
 dl_thread.join()
